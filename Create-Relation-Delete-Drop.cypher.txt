@@ -4,15 +4,15 @@ match (bonesso) return (bonesso)
 create(:Client {name:'Valentim',age:3,hobbies:['brincar','dormir','comer','jogar']})-[:Bloqueado]->(:Client{name:'Octavio',age:16,hobbies:['programação','brincar','dormir','comer','jogar']})
 match (todos) return (todos)
 
-CRIANDO RELACIONAMENTO
+//CRIANDO RELACIONAMENTO
 match (Alladio:Client{name:'Alladio Bonesso'}),(Octavio:Client{name:'Octavio'}) create (Alladio)-[:Bloqueado]->(Octavio)
 
-DELETANDO RELACIONAMENTO
+//DELETANDO RELACIONAMENTO
 match (Alladio:Client{name:'Alladio Bonesso'}) - [relaciona:Bloqueado] -() DELETE relaciona
 
-TROCANDO A LABEL
+//TROCANDO A LABEL
 match(o:Client {name:"Octavio"}) set o:Client_Premium 
 
-DELETANDO TODA A BASE
+//DELETANDO TODA A BASE
 MATCH (n) DETACH DELETE n
 
