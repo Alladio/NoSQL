@@ -1,0 +1,18 @@
+create(:Client {name:"Alladio Bonesso",age:32,hobbies:['programação','marketing','buiness','brincar','dormir','comer','jogar']})
+match (bonesso) return (bonesso)
+
+create(:Client {name:'Valentim',age:3,hobbies:['brincar','dormir','comer','jogar']})-[:Bloqueado]->(:Client{name:'Octavio',age:16,hobbies:['programação','brincar','dormir','comer','jogar']})
+match (todos) return (todos)
+
+CRIANDO RELACIONAMENTO
+match (Alladio:Client{name:'Alladio Bonesso'}),(Octavio:Client{name:'Octavio'}) create (Alladio)-[:Bloqueado]->(Octavio)
+
+DELETANDO RELACIONAMENTO
+match (Alladio:Client{name:'Alladio Bonesso'}) - [relaciona:Bloqueado] -() DELETE relaciona
+
+TROCANDO A LABEL
+match(o:Client {name:"Octavio"}) set o:Client_Premium 
+
+DELETANDO TODA A BASE
+MATCH (n) DETACH DELETE n
+
